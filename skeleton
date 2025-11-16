@@ -1,0 +1,240 @@
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+// ====================== GLOBAL CONSTANTS ======================
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 400;
+const int GROUND_LEVEL = 300;
+
+// ====================== GLOBAL VARIABLES ======================
+int playerX, playerY;                 // Player position
+int score = 0;                         // Current score
+int obstacleCount = 0;                 // Number of obstacles
+int* obstacleX = nullptr;              // Dynamic array of obstacle X positions
+int* obstacleY = nullptr;              // Dynamic array of obstacle Y positions
+
+sf::Texture dinoTexture, obstacleTexture, backgroundTexture;
+sf::Sprite dinoSprite, obstacleSprite, backgroundSprite;
+
+// ====================== STRUCTS ======================
+struct PlayerStats {
+    char name[20];
+    int gamesPlayed;
+    int easyPlayed;
+    int mediumPlayed;
+    int hardPlayed;
+    int totalScore;
+    int bestEasy;
+    int bestMedium;
+    int bestHard;
+};
+
+// ====================== FUNCTION PROTOTYPES ======================
+
+// ------------------- GROUP A: PLAYER, MENU, FILES -------------------
+void showMainMenu();
+int getMenuChoice();
+void handleMenuChoice(int choice);
+void showHelp();
+void getPlayerName(char playerName[]);
+int chooseDifficulty();
+void showHighScoresMenu();
+void showHighScores(int difficulty);
+void showPlayerScores();
+bool fileExists(const char* filename);
+void saveHighScore(int difficulty, char name[], int score);
+void savePlayerStats(char name[], int difficulty, int score);
+void loadAllPlayers(PlayerStats* &arr, int &count);
+void saveAllPlayers(PlayerStats* arr, int count);
+int findPlayerIndex(PlayerStats* arr, int count, char name[]);
+void updatePlayerRecord(PlayerStats &p, int difficulty, int score);
+void expandPlayerArray(PlayerStats* &arr, int &count);
+void showPlayerStats(PlayerStats p);
+void clearScreen();
+
+// ------------------- GROUP B: GAMEPLAY LOGIC -------------------
+void startNewGame();
+void startGame(int difficulty, char playerName[]);
+void initializeGame();
+void updateDino();
+void updateObstacle();
+bool checkCollision();
+void updateScore();
+void gameOverScreen(int score, char playerName[], int difficulty);
+
+// ------------------- GROUP C: GRAPHICS + SFML -------------------
+void loadAssets();
+void freeAssets();
+void renderGame(sf::RenderWindow &window);
+void drawBackground(sf::RenderWindow &window);
+void drawDino(sf::RenderWindow &window);
+void drawObstacle(sf::RenderWindow &window);
+void drawScore(sf::RenderWindow &window);
+void gameLoop(int difficulty, char playerName[]);
+
+// ====================== MAIN FUNCTION ======================
+int main() {
+    // Load assets
+    loadAssets();
+
+    while (true) {
+        showMainMenu();
+        int choice = getMenuChoice();
+        handleMenuChoice(choice);
+    }
+
+    freeAssets();
+    return 0;
+}
+
+// ====================== GROUP A: PLAYER, MENU, FILES ======================
+void showMainMenu() {
+    // TODO: Display main menu (New Game / High Scores / Player Scores / Help / Exit)
+}
+
+int getMenuChoice() {
+    // TODO: Take menu input and validate
+    return 0;
+}
+
+void handleMenuChoice(int choice) {
+    // TODO: Handle user choice from menu
+}
+
+void showHelp() {
+    // TODO: Show how to play the game
+}
+
+void getPlayerName(char playerName[]) {
+    // TODO: Ask user for player name
+}
+
+int chooseDifficulty() {
+    // TODO: Ask user for difficulty (Easy / Medium / Hard)
+    return 1;
+}
+
+void showHighScoresMenu() {
+    // TODO: Display High Scores menu (Easy / Medium / Hard)
+}
+
+void showHighScores(int difficulty) {
+    // TODO: Show high scores for given difficulty
+}
+
+void showPlayerScores() {
+    // TODO: Show scores for a specific player
+}
+
+bool fileExists(const char* filename) {
+    // TODO: Check if file exists
+    return false;
+}
+
+void saveHighScore(int difficulty, char name[], int score) {
+    // TODO: Save high score in text file
+}
+
+void savePlayerStats(char name[], int difficulty, int score) {
+    // TODO: Save player stats in binary file
+}
+
+void loadAllPlayers(PlayerStats* &arr, int &count) {
+    // TODO: Load all players from binary file into dynamic array
+}
+
+void saveAllPlayers(PlayerStats* arr, int count) {
+    // TODO: Save all players dynamic array to binary file
+}
+
+int findPlayerIndex(PlayerStats* arr, int count, char name[]) {
+    // TODO: Search player in dynamic array
+    return -1;
+}
+
+void updatePlayerRecord(PlayerStats &p, int difficulty, int score) {
+    // TODO: Update individual player record
+}
+
+void expandPlayerArray(PlayerStats* &arr, int &count) {
+    // TODO: Expand dynamic array when adding new player
+}
+
+void showPlayerStats(PlayerStats p) {
+    // TODO: Display a single player’s stats
+}
+
+void clearScreen() {
+    // TODO: Clear console screen (system dependent)
+}
+
+// ====================== GROUP B: GAMEPLAY LOGIC ======================
+void startNewGame() {
+    // TODO: Setup new game (ask difficulty, player name)
+}
+
+void startGame(int difficulty, char playerName[]) {
+    // TODO: Initialize game, start game loop
+}
+
+void initializeGame() {
+    // TODO: Initialize player, obstacles, score
+}
+
+void updateDino() {
+    // TODO: Update player position / jump / gravity
+}
+
+void updateObstacle() {
+    // TODO: Move obstacles, spawn new ones
+}
+
+bool checkCollision() {
+    // TODO: Detect collision between player and obstacles
+    return false;
+}
+
+void updateScore() {
+    // TODO: Increase score based on distance / obstacles
+}
+
+void gameOverScreen(int score, char playerName[], int difficulty) {
+    // TODO: Display Game Over screen and save scores
+}
+
+// ====================== GROUP C: GRAPHICS + SFML ======================
+void loadAssets() {
+    // TODO: Load textures, sprites, fonts
+}
+
+void freeAssets() {
+    // TODO: Free SFML resources if necessary
+}
+
+void renderGame(sf::RenderWindow &window) {
+    // TODO: Draw everything on window
+}
+
+void drawBackground(sf::RenderWindow &window) {
+    // TODO: Draw background
+}
+
+void drawDino(sf::RenderWindow &window) {
+    // TODO: Draw player sprite
+}
+
+void drawObstacle(sf::RenderWindow &window) {
+    // TODO: Draw obstacle sprites
+}
+
+void drawScore(sf::RenderWindow &window) {
+    // TODO: Draw score on window
+}
+
+void gameLoop(int difficulty, char playerName[]) {
+    // TODO: Main SFML loop: handle events, update positions, render
+}
